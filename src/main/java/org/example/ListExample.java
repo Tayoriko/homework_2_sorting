@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class ListExample {
     /*
@@ -12,25 +13,27 @@ public class ListExample {
         arr = [1 ,2 ,3, 5], k = 2
         res = [1.5, 2.5, 4]
      */
-    public ArrayList<Double> selectK (ArrayList<Integer> source, int k){
+    public List<Double> selectK (ArrayList<Integer> source, int k){
         ArrayList<Double> result = new ArrayList<>();
-        int start = 0;
-        int end = 0;
         Double summ = 0.0;
-        Double value = 0.0;
 
         if (k <= source.size() && k > 1)
         {
-            end = k;
-            while (end <= source.size()){
-                for (int i = start; i < end; i++) {
-                    summ = summ + source.get(i);
-                }
-                value = summ / k;
-                result.add(value);
-                summ = 0.0;
-                start++;
-                end++;
+            for (int i = 0; i < k; i++) {
+                summ = summ + source.get(i);
+            }
+            result.add(summ / k);
+//            while (end < source.size()){
+//                summ = summ - source.get(start);
+//                summ = summ + source.get(end);
+//                result.add(summ / k);
+//                start++;
+//                end++;
+//            }
+            for (int i = 0; i < source.size() - k; i++) {
+                summ = summ - source.get(i);
+                summ = summ + source.get(i + k);
+                result.add(summ / k);
             }
         }
         else {
