@@ -17,7 +17,7 @@ public class Collections {
             }
             //проверка на наличие значение
             else if (source.isEmpty()){
-                throw new RuntimeException("Input Map is Empty");
+                throw new IllegalArgumentException("Input Map is Empty");
             }
             //Map допущен к дальнейшей обработке
             else {
@@ -32,7 +32,7 @@ public class Collections {
                 }
                 //дубликаты обнаружены
                 if (checkDoubleValues){
-                    throw new RuntimeException("Input map has doubled values");
+                    throw new IllegalArgumentException("Input map has doubled values");
                 }
                 //выполнение задачи, если пройдены все проверки и не найдены дубликаты
                 for (Integer key : source.keySet()){
@@ -41,6 +41,8 @@ public class Collections {
             }
         } catch (NullPointerException e){
             System.out.println("Find null exception: " + e.getMessage());
+        } catch (IllegalArgumentException e){
+            System.out.println("Find illegal argument exception: " + e.getMessage());
         } catch (RuntimeException e){
             System.out.println("Find runtime exception: " + e.getMessage());
         }

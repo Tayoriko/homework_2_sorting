@@ -26,7 +26,7 @@ class ListExampleTest {
 
         System.out.println("Исходный массив: " + Arrays.toString(source.toArray()));
 
-        int k = 3;
+        int k = 0;
 
         System.out.println("K = " + k);
 
