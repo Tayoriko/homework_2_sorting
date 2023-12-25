@@ -9,8 +9,40 @@ public class Collections {
      */
     public HashMap<String, Integer> swapHashMap (HashMap<Integer, String> source){
         HashMap<String, Integer> result = new HashMap<>();
-        for (Integer key : source.keySet()){
-            result.put(source.get(key), key);
+        //проверки входного массива
+        try {
+            //проверка на null
+            if (source == null){
+                throw new NullPointerException("Input Map is null");
+            }
+            //проверка на наличие значение
+            else if (source.isEmpty()){
+                throw new RuntimeException("Input Map is Empty");
+            }
+            //Map допущен к дальнейшей обработке
+            else {
+                //проверка на наличие дубликатов
+                HashSet<String> uniqueValues = new HashSet<>();
+                boolean checkDoubleValues = false;
+                for (String value : source.values()){
+                    if(!uniqueValues.add(value)){
+                        checkDoubleValues = true;
+                        break;
+                    }
+                }
+                //дубликаты обнаружены
+                if (checkDoubleValues){
+                    throw new RuntimeException("Input map has doubled values");
+                }
+                //выполнение задачи, если пройдены все проверки и не найдены дубликаты
+                for (Integer key : source.keySet()){
+                    result.put(source.get(key), key);
+                }
+            }
+        } catch (NullPointerException e){
+            System.out.println("Find null exception: " + e.getMessage());
+        } catch (RuntimeException e){
+            System.out.println("Find runtime exception: " + e.getMessage());
         }
         return result;
     }
@@ -49,15 +81,12 @@ public class Collections {
         Задание 3: Реализуй метод, который на вход примет ArrayList строк и удаляет из него все дубликаты,
         не используя метод contains(). Можно использовать другие коллекции, которые были изучены на уроке.
      */
-    public ArrayList<String> getUniqueFromArray(ArrayList<String> source){
+    public void getUniqueFromArray(ArrayList<String> source){
         HashSet<String> hashSet = new HashSet<>();
         for (String element : source){
             hashSet.add(element);
         }
         source.clear();
-        for (String element : hashSet){
-            source.add(element);
-        }
-        return source;
+        source.addAll(hashSet);
     }
 }

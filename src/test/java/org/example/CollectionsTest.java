@@ -11,9 +11,10 @@ class CollectionsTest {
     Collections collect = new Collections();
 
     @Test
-    void swapHashMapTest() {
+    //проверка валидной Map
+    void swapHashMapTest_1() {
         HashMap<Integer, String> source = new HashMap<>();
-        HashMap<String, Integer> result = new HashMap<>();
+        HashMap<String, Integer> result;
         source.put(10, "Anna");
         source.put(11, "Vadim");
         source.put(12, "Oleg");
@@ -28,7 +29,33 @@ class CollectionsTest {
         for (Map.Entry<String, Integer> entry : result.entrySet()) {
             System.out.println("Ключ: " + entry.getKey() + ", Значение: " + entry.getValue());
         }
+    }
+    
+    @Test
+    //проверка Map null
+    void swapHashMapTest_2(){
+        HashMap<Integer, String> source = null;
+        HashMap<String, Integer> result;
+        result = collect.swapHashMap(source);
+    }
 
+    @Test
+    //проверка Map empty
+    void swapHashMapTest_3(){
+        HashMap<Integer, String> source = new HashMap<>();
+        HashMap<String, Integer> result;
+        result = collect.swapHashMap(source);
+    }
+
+    @Test
+    //проверка Map c дубликатами
+    void swapHashMapTest_4(){
+        HashMap<Integer, String> source = new HashMap<>();
+        HashMap<String, Integer> result;
+        source.put(10, "Anna");
+        source.put(11, "Anna");
+        source.put(12, "Oleg");
+        result = collect.swapHashMap(source);
     }
 
     @Test
@@ -57,7 +84,7 @@ class CollectionsTest {
             System.out.println(element);
         }
 
-        source = collect.getUniqueFromArray(source);
+        collect.getUniqueFromArray(source);
         System.out.println("Преобразованный массив: ");
         for (String element : source){
             System.out.println(element);
