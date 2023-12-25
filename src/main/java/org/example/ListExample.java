@@ -1,7 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.List;
 
 public class ListExample {
@@ -23,7 +23,7 @@ public class ListExample {
      */
     public List<Double> selectK (ArrayList<Integer> source, int k){
         ArrayList<Double> result = new ArrayList<>();
-        Double summ = 0.0;
+        double summ = 0.0;
         boolean exception = false;
 
         //check for exceptions
@@ -53,7 +53,6 @@ public class ListExample {
         if (!exception) {
             //calc first window
             for (int i = 0; i < k; i++) {
-                assert source != null : "WTF i didn't undestand how it possible for Integer";
                 summ = summ + source.get(i);
             }
             result.add(summ / k);

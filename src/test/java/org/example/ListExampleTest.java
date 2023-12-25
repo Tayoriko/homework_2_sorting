@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
 
 class ListExampleTest {
 
@@ -14,7 +14,7 @@ class ListExampleTest {
 
     @Test
     void selectK() {
-        ArrayList<Integer> source = new ArrayList<Integer>();
+        ArrayList<Integer> source = new ArrayList<>();
         List<Double> result;
         source.add(1);
         source.add(2);
